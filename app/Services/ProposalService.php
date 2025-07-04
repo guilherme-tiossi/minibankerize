@@ -17,11 +17,10 @@ class ProposalService
 
     public function registerProposal($proposalEntity)
     {
-        $this->proposalRepository->saveProposal($proposalEntity);
-
+        $proposalEntity = $this->proposalRepository->saveProposal($proposalEntity);
         $proposalEntity->status = $this->authorizationService->getAuthorization();
         
-        $proposalEntity = $this->proposalRepository->updateProposal($proposalEntity);
+        $proposalEntity = $this->proposalRepository->updateProposal($proposalEntity, ['status' => $proposalEntity->status]);
 
         return $proposalEntity;
     }

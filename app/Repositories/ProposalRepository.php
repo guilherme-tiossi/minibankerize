@@ -21,8 +21,8 @@ class ProposalRepository
         return $proposalEntity;
     }
 
-    public function updateProposal(ProposalEntity $proposalEntity, string $status) {
-        $proposalEntity = $this->proposalAdapter->updateStatus($proposalEntity, $status);
+    public function updateProposal(ProposalEntity $proposalEntity, array $data) {
+        $proposalEntity = $this->proposalAdapter->update($proposalEntity, $data);
 
         return $proposalEntity;
     }

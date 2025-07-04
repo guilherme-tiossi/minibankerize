@@ -22,12 +22,11 @@ class ProposalAdapter
         return $proposalEntity;
     }
 
-    public function updateStatus(ProposalEntity $proposalEntity, string $status) {
-        $proposal = Proposal::where('id', $proposalId)->update([
-            'status' => $proposalEntity->status
-        ]);
+    public function update(ProposalEntity $proposalEntity, array $data) {
+        $proposal = Proposal::where('id', $proposalEntity->id)->update($data);
 
         $proposalEntity->status = $proposal->status;
+        $proposalEntity->notificado = $proposal->notificado;
 
         return $proposalEntity;
     }

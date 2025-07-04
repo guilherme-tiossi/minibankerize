@@ -10,6 +10,8 @@ class ProposalEntity
     public string $data_nascimento;
     public float $valor_emprestimo;
     public string $chave_pix;
+    public string $status;
+    public bool $notificado;
 
     public function __construct(string $cpf, string $nome, string $data_nascimento, float $valor_emprestimo, string $chave_pix, int $id = null)
     {
