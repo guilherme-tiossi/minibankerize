@@ -2,20 +2,20 @@
 
 namespace App\Services;
 
-use App\Adapters\RequestAdapter;
+use App\Helpers\RequestClient;
 
 class AuthorizationService
 {
-    private RequestAdapter $requestAdapter;
+    private RequestClient $requestClient;
 
-    public function __construct(RequestAdapter $requestAdapter)
+    public function __construct(RequestClient $requestClient)
     {
-        $this->requestAdapter = $requestAdapter;
+        $this->requestClient = $requestClient;
     }
 
     public function getAuthorization()
     {
-        $successfulAuthorization = $this->requestClient->try(getenv('AUTHORIZE_URL'));
+        $successfulAuthorization = $this->requestClient->try(getenv('AUTHORIZE_URL'), 'get');
 
         $status = $successfulAuthorization ? 'approved' : 'denied'; 
      

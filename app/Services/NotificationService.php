@@ -18,7 +18,7 @@ class NotificationService
 
     public static function sendNotification()
     {
-        $successful = $this->requestClient->try(getenv('NOTIFY_URL'));
+        $successful = $this->requestClient->try(getenv('NOTIFY_URL'), 'post');
     }
 
 }
