@@ -4,7 +4,7 @@ namespace App\Entities;
 
 class ProposalEntity
 {
-    public $id;
+    public ?int $id = null;
     public string $cpf;
     public string $nome;
     public string $data_nascimento;
@@ -13,8 +13,14 @@ class ProposalEntity
     public string $status;
     public bool $notificado;
 
-    public function __construct(string $cpf, string $nome, string $data_nascimento, float $valor_emprestimo, string $chave_pix, $id = null)
-    {
+    public function __construct(
+        string $cpf,
+        string $nome,
+        string $data_nascimento,
+        float $valor_emprestimo,
+        string $chave_pix,
+        ?int $id = null
+    ) {
         $this->id = $id;
         $this->cpf = $cpf;
         $this->nome = $nome;

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Entities\ProposalEntity;
 use App\Services\AuthorizationService;
 use App\Repositories\ProposalRepository;
 
@@ -16,7 +17,7 @@ class ProposalService
         $this->proposalRepository = $proposalRepository;
     }
 
-    public function registerProposal($proposalEntity)
+    public function registerProposal(ProposalEntity $proposalEntity)
     {
         $proposalEntity = $this->proposalRepository->saveProposal($proposalEntity);
         $proposalEntity->status = $this->authorizationService->getAuthorization();

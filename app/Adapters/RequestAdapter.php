@@ -8,7 +8,6 @@ class RequestAdapter
 {
     public function makeRequest($url, $method)
     {
-
         switch ($method) {
             case 'get':
                 $result = Http::get($url);

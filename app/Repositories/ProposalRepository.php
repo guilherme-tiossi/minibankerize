@@ -21,10 +21,10 @@ class ProposalRepository
         return $proposalEntity;
     }
 
-    public function updateProposal(ProposalEntity $proposalEntity, array $data) {
+    public function updateProposal(ProposalEntity $proposalEntity, array $data)
+    {
         $proposalEntity = $this->proposalAdapter->update($proposalEntity, $data);
 
         return $proposalEntity;
     }
-
 }

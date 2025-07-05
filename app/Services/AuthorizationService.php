@@ -17,9 +17,8 @@ class AuthorizationService
     {
         $successfulAuthorization = $this->requestClient->try(getenv('AUTHORIZE_URL'), 'get');
 
-        $status = $successfulAuthorization ? 'approved' : 'denied'; 
-     
+        $status = $successfulAuthorization ? 'approved' : 'denied';
+
         return $status;
     }
-
 }

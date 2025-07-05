@@ -22,7 +22,9 @@ class RequestClient
         while ($successful !== true && $tries < 50) {
             $result = $this->requestAdapter->makeRequest($url, $method);
 
-            if ($result['successful']) $successful = true;
+            if ($result['successful']) {
+                $successful = true;
+            }
 
             $tries++;
         }
