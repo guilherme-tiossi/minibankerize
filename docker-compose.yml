@@ -33,13 +33,15 @@ services:
       MYSQL_DATABASE: minibankerize
       MYSQL_ROOT_PASSWORD: secret
     volumes:
-      - mysql_data:/var/lib/mysql
+        # dados do bd no projeto local
+      - ./docker/mysql/data:/var/lib/mysql
     networks:
       - minibankerize_network
 
 volumes:
   mysql_data:
     driver: local
+    name: minibankerize_mysql_data
 
 networks:
   minibankerize_network:
