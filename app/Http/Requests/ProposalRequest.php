@@ -14,7 +14,7 @@ class ProposalRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'cpf' => ['required', 'integer'],
+            'cpf' => ['required', 'integer', 'unique:proposals,cpf'],
             'nome' => ['required', 'string'],
             'data_nascimento' => ['required', 'date'],
             'valor_emprestimo' => ['required', 'numeric'],

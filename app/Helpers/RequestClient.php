@@ -13,23 +13,14 @@ class RequestClient
     {
         $this->requestAdapter = $requestAdapter;
     }
-    
+
     public function try($url, $method)
     {
         $successful = false;
+        $tries = 0;
 
         while ($successful !== true && $tries < 50) {
-            switch ($method) {
-                case 'get':
-                    $result = $this->requestAdapter->get($url);
-                    break;
-                case 'post':
-                    $result = $this->requestAdapter->post($url);
-                    break;
-                default:
-                    $result = $this->requestAdapter->get($url);
-                    break;
-            }
+            $result = $this->requestAdapter->makeRequest($url, $method);
 
             if ($result['successful']) $successful = true;
 
@@ -38,5 +29,4 @@ class RequestClient
 
         return $successful;
     }
-
 }

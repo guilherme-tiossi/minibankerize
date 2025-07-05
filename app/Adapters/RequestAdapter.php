@@ -6,14 +6,23 @@ use Illuminate\Support\Facades\Http;
 
 class RequestAdapter
 {
-    public function get($url)
+    public function makeRequest($url, $method)
     {
-        $result = Http::get($url);
-        
+
+        switch ($method) {
+            case 'get':
+                $result = Http::get($url);
+                break;
+            case 'post':
+                $result = Http::post($url);
+                break;
+            default:
+                $result = Http::get($url);
+        }
+
         return [
-            'status' => $result->successful(),
+            'successful' => $result->successful(),
             'json' => $result->json()
         ];
     }
-
 }

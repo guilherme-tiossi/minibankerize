@@ -22,8 +22,10 @@ class ProposalAdapter
         return $proposalEntity;
     }
 
-    public function update(ProposalEntity $proposalEntity, array $data) {
-        $proposal = Proposal::where('id', $proposalEntity->id)->update($data);
+    public function update(ProposalEntity $proposalEntity, array $data)
+    {
+        $proposal = Proposal::find($proposalEntity->id);
+        $proposal->update($data);
 
         $proposalEntity->status = $proposal->status;
         $proposalEntity->notificado = $proposal->notificado;

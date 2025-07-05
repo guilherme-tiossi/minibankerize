@@ -2,23 +2,19 @@
 
 namespace App\Services;
 
-use App\Adapters\RequestAdapter;
 use App\Helpers\RequestClient;
-use App\Helpers\ProposalService;
 
 class NotificationService
 {
-    private RequestAdapter $requestAdapter;
-    private ProposalService $proposalService;
+    private RequestClient $requestClient;
 
-    public function __construct(RequestClient $requestClient, NotificationService $proposalService)
+    public function __construct(RequestClient $requestClient)
     {
         $this->requestClient = $requestClient;
     }
 
-    public static function sendNotification()
+    public function sendNotification()
     {
-        $successful = $this->requestClient->try(getenv('NOTIFY_URL'), 'post');
+        return $this->requestClient->try(getenv('NOTIFY_URL'), 'post');
     }
-
 }

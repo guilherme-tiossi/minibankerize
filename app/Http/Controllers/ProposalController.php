@@ -17,15 +17,15 @@ class ProposalController extends Controller
 
     public function proposal(ProposalRequest $request)
     {
-        $proposalEntity = new ProposalEntity([
-            $request->validated()->cpf,
-            $request->validated()->nome,
-            $request->validated()->data_nascimento,
-            $request->validated()->valor_emprestimo,
-            $request->validated()->chave_pix
-        ]);
+        $proposalEntity = new ProposalEntity(
+            $request->validated()['cpf'],
+            $request->validated()['nome'],
+            $request->validated()['data_nascimento'],
+            $request->validated()['valor_emprestimo'],
+            $request->validated()['chave_pix']
+        );
 
-        $proposalEntity = $this->$proposalService->registerProposal($proposalEntity);
+        $proposalEntity = $this->proposalService->registerProposal($proposalEntity);
 
         return response([
             'cpf' => $proposalEntity->cpf,
