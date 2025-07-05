@@ -4,21 +4,21 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+
+        Schema::create('proposals', function (Blueprint $table) {
             $table->id();
-            $table->integer('cpf')->unique();
-            $table->string('name');
+            $table->bigInteger('cpf');
+            $table->string('nome');
             $table->date('data_nascimento');
             $table->string('chave_pix');
+            $table->float('valor_emprestimo');
             $table->enum('status', ['denied', 'processing', 'approved'])->default('processing');
             $table->boolean('notificado')->default(false);
         });
@@ -31,6 +31,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('proposals');
     }
-}
+};
